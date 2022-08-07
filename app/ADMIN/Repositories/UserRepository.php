@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserRepository
 {
-    public function createUser(array $request)
+    public function createUser(array $request): int
     {
         return User::create([
             'name' => $request["username"],
@@ -18,7 +18,7 @@ class UserRepository
         ]);
     }
 
-    public function getAllUsers():LengthAwarePaginator
+    public function getAllUsers(): LengthAwarePaginator
     {
         return User::query()->paginate(5);
     }

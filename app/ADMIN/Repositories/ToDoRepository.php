@@ -4,10 +4,10 @@ namespace App\ADMIN\Repositories;
 
 use App\Models\TagsForTasks;
 use App\Models\Tasks;
+use Illuminate\Database\Eloquent\Collection;
 
 class ToDoRepository
 {
-
 
     public function createNewTaskItem(
         int    $userId,
@@ -15,7 +15,7 @@ class ToDoRepository
         string $description,
         string $statusTagValue,
         string $imagePath
-    )
+    ): int
     {
         return Tasks::create([
             'user_id' => $userId,
@@ -29,7 +29,7 @@ class ToDoRepository
     public function compareTagsForTasks(
         int $taskId,
         int $tagId
-    )
+    ): int
     {
         return TagsForTasks::create([
             'task_id' => $taskId,
@@ -37,7 +37,7 @@ class ToDoRepository
         ]);
     }
 
-    public function getAllTasks()
+    public function getAllTasks(): Collection
     {
         return Tasks::query()
             ->join('users', 'tasks.user_id', '=', 'users.id')
@@ -45,7 +45,7 @@ class ToDoRepository
             ->get();
     }
 
-    public function getTagsValueByTaskId(int $taskId)
+    public function getTagsValueByTaskId(int $taskId): Collection
     {
         return TagsForTasks::query()
             ->select('*')

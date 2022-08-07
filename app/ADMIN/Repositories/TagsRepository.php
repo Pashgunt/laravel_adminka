@@ -3,15 +3,17 @@
 namespace App\ADMIN\Repositories;
 
 use App\Models\Tags;
+use Illuminate\Database\Eloquent\Collection;
 
 class TagsRepository
 {
-    public function checkIssetTag(?string $tagName)
+
+    public function checkIssetTag(?string $tagName): Collection
     {
         return Tags::query()->where('tag_value', 'like', "%$tagName%")->get();
     }
 
-    public function addNewTagItem(string $tagName)
+    public function addNewTagItem(string $tagName): int
     {
         $tagItem = Tags::create([
             'tag_value' => $tagName,
@@ -21,7 +23,7 @@ class TagsRepository
         return $tagItem->id;
     }
 
-    public function getTagIdByTagName(string $tagName)
+    public function getTagIdByTagName(string $tagName): Collection
     {
         return Tags::query()
             ->select('id')

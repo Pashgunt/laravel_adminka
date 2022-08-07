@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Collection;
 
 class PasswordResetRepository
 {
-    public function addAccessTokenForRecovery(string $email, string $accessToken)
+
+    public function addAccessTokenForRecovery(string $email, string $accessToken): bool
     {
-        PasswordReset::query()->insert([
+        return PasswordReset::query()->insert([
             'email' => $email,
             'token' => $accessToken
         ]);

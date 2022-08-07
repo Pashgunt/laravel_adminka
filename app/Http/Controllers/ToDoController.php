@@ -10,6 +10,7 @@ use App\Models\Tasks;
 use Illuminate\Http\Request;
 use App\ADMIN\Repositories\TagsRepository;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class ToDoController extends Controller
 {
@@ -80,7 +81,7 @@ class ToDoController extends Controller
         $this->makeEchoSolution($data);
     }
 
-    public function getAllTasks()
+    public function getAllTasks(): View
     {
         $tasks = $this->toDoRepository->getAllTasks()->all();
         foreach ($tasks as $key => $task) {
