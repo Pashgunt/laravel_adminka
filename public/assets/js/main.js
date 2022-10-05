@@ -12,6 +12,7 @@ $(() => {
             $(elem).hasClass('confirm_success')) {
             $('.modal_confirm').hide().removeClass('d-flex')
             $('.modal_window').hide().removeClass('d-flex')
+            $('.modal_edit').hide().removeClass('d-flex')
         }
         if ($(elem).hasClass('tag_item')) {
             $('.tag_items').find('div').append($(elem))
@@ -138,7 +139,7 @@ $(() => {
                 url: '/start_process_task',
                 method: 'post',
                 data: {
-                    'task_id': $('.task_id').data('id')
+                    'task_id': $('.task_id').closest('.task_elem').find('.task_id').data('id')
                 },
                 dataType: "json",
                 cache: false,
@@ -166,7 +167,7 @@ $(() => {
                 url: '/finish_process_task',
                 method: 'post',
                 data: {
-                    'task_id': $('.task_id').data('id')
+                    'task_id': $('.task_id').closest('.task_elem').find('.task_id').data('id')
                 },
                 dataType: "json",
                 cache: false,
@@ -178,6 +179,32 @@ $(() => {
                     }
                 }
             })
+        })
+    })
+
+    $('.edit_task').on('click', e => {
+        e.preventDefault();
+        $('.modal_edit').show().addClass('d-flex')
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: '/edit_task_by_id',
+            method: 'post',
+            data: {
+                'task_id': $('.task_id').data('id')
+            },
+            dataType: "json",
+            cache: false,
+            crossDomain: false,
+            success(response) {
+                console.log(response)
+                if (response['result'] === 'ok') {
+                    location.reload();
+                }
+            }
         })
     })
 })

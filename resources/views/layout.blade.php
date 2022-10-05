@@ -94,6 +94,55 @@
     </div>
 </div>
 
+<div class="modal_edit modal_window_hide fixed-top w-100 h-100 align-items-center justify-content-end"
+     style="background: rgba(0,0,0,.25)">
+    <div class="bg-white border rounded p-4 w-50 h-100 t-0 r-0">
+        <h3 class="mb-4 pb-3 border-bottom">
+            Редактирование задачи
+        </h3>
+        <form method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    Введите название задачи
+                    <div class="alert alert-danger mb-3 task_name_error"></div>
+                    <input type="text" id="task_name" class="form-control">
+                </label>
+            </div>
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    Введите краткое описание задачи
+                    <div class="alert alert-danger mb-3 task_description_error"></div>
+                    <textarea id="task_description" class="form-control"></textarea>
+                </label>
+            </div>
+            <div class="form-group mb-3">
+                <lable class="d-block">
+                    Выберите канртинку
+                    <div class="alert alert-danger mb-3 task_image_error"></div>
+                    <input type="file" id="task_image" name="task_image" class="form-control">
+                </lable>
+            </div>
+            <div class="form-group mb-3">
+                <label class="d-block">
+                    Введите теги для задачи
+                    <input type="text" id="task_tags_input" class="form-control">
+                    <a href="#" class="btn btn-outline-success brn-sm mt-2 create_own_tag">Создать свой тег</a>
+                </label>
+            </div>
+            <div class="rounded bg-light mb-3 p-1 tags_prepare_list d-flex flex-wrap"></div>
+
+            <div class="tag_items mb-5">
+                <h4 class="mb-2">Теги:</h4>
+                <div class="d-flex flex-wrap"></div>
+            </div>
+
+            <button class="btn btn-primary edit_new_task">Изменить</button>
+        </form>
+    </div>
+</div>
+
+
 @yield('content')
 
 </body>

@@ -40,7 +40,7 @@
                 <div class="p-1 mt-3">
                     @if(isset($tasks[\App\Models\Tasks::STATUS_PLANED]) && !empty($tasks[\App\Models\Tasks::STATUS_PLANED]))
                         @foreach($tasks[\App\Models\Tasks::STATUS_PLANED] as $item)
-                            <div class="p-3 bg-light mb-4 rounded">
+                            <div class="p-3 bg-light mb-4 rounded task_elem">
                                 <div class="d-none task_id" data-id="{{$item['task_id']}}"></div>
                                 <div class="d-flex flex-wrap mb-2">
                                     @if(!empty($item['tags']))
@@ -82,7 +82,7 @@
                 <div class="p-1 mt-3">
                     @if(isset($tasks[\App\Models\Tasks::STATUS_PROCESS]) && !empty($tasks[\App\Models\Tasks::STATUS_PROCESS]))
                         @foreach($tasks[\App\Models\Tasks::STATUS_PROCESS] as $item)
-                            <div class="p-3 bg-light mb-4 rounded">
+                            <div class="p-3 bg-light mb-4 rounded task_elem">
                                 <div class="d-none task_id" data-id="{{$item['task_id']}}"></div>
                                 <div class="d-flex flex-wrap mb-2">
                                     @if(!empty($item['tags']))
@@ -122,7 +122,7 @@
                 <div class="p-1 mt-3">
                     @if(isset($tasks[\App\Models\Tasks::STATUS_SUCCESS]) && !empty($tasks[\App\Models\Tasks::STATUS_SUCCESS]))
                         @foreach($tasks[\App\Models\Tasks::STATUS_SUCCESS] as $item)
-                            <div class="p-3 bg-light mb-4 rounded">
+                            <div class="p-3 bg-light mb-4 rounded task_elem">
                                 <div class="d-none task_id" data-id="{{$item['task_id']}}"></div>
                                 <div class="d-flex flex-wrap mb-2">
                                     @if(!empty($item['tags']))
