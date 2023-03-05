@@ -33,10 +33,11 @@ class LoginUserController
 
     public function store(LoginUserRequest $request): RedirectResponse
     {
+        $rememberMeFlag = !!$request->input('rememberMe');
 
         $validated = $request->validated();
 
-        if (Auth::attempt($validated, true)) {
+        if (Auth::attempt($validated, $rememberMeFlag)) {
             return redirect(route("home"));
         }
         return redirect("/")

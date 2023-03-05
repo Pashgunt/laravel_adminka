@@ -22,6 +22,10 @@
                            placeholder="Введите пароль">
                 </div>
                 <div class="form-group">
+                    <label for="rememberMe">Запомнить меня</label>
+                    <input type="checkbox" name="rememberMe" id="rememberMe">
+                </div>
+                <div class="form-group">
                     <a href="{{route("authorize.recovery")}}">Забыли пароль?</a>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg active">Войти</button>
