@@ -44,15 +44,15 @@ Route::middleware("guest")->prefix("/register")->group(function () {
 });
 
 Route::prefix("/email")->group(function () {
+    Route::post('/verification-notification', [RegisterUserController::class, "sendEmailAgain"])
+        ->middleware(['auth', 'throttle:6,1'])
+        ->name('verification.send');
     Route::get('/verify', [RegisterUserController::class, "verify"])
         ->middleware('auth')
         ->name('verification.notice');
     Route::get('/verify/{id}/{hash}', [RegisterUserController::class, "verifyEmail"])
         ->middleware(['auth', 'signed'])
         ->name("verification.verify");
-    Route::post('/email/verification-notification', [RegisterUserController::class, "sendEmailAgain"])
-        ->middleware(['auth', 'throttle:6,1'])
-        ->name('verification.send');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -60,6 +60,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/new_tag_item', [ToDoController::class, 'addNewTagItem']);
     Route::post('/create_new_task', [ToDoController::class, 'createItem']);
     Route::get('/check_task_tags', [ToDoController::class, 'checkIssetTagItem']);
-    Route::post('/start_process_task',[ToDoController::class,'startProcessTask']);
-    Route::post('/finish_process_task',[ToDoController::class,'finishProcessTask']);
+    Route::post('/start_process_task', [ToDoController::class, 'startProcessTask']);
+    Route::post('/finish_process_task', [ToDoController::class, 'finishProcessTask']);
 });

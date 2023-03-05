@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserRepository
 {
-    public function createUser(array $request): int
+    public function createUser(array $request): User
     {
         return User::create([
             'name' => $request["username"],

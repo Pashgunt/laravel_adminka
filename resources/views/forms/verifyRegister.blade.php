@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', 'ToDo - подтверждение регистрации')
 
-@section ('content')
+@section('content')
     <div class="column mt-5">
         <div class="row justify-content-center">
             <div class="position-absolute top-50 start-50 translate-middle p-3 col-md-9 border">
@@ -12,7 +12,10 @@
                 <div class="text-center mt-3">Пройдите по ссылке, отправленной в письме, и завершите регистрацию
                 </div>
                 <div class="text-center mt-3">Повторная отправка формы
-                    <a href="{{route("verification.send")}}">Отправить ещё раз</a>
+                    <form action="{{ route('verification.send') }}" method="POST">
+                        @csrf
+                        <button>Отправить ещё раз</button>
+                    </form>
                 </div>
             </div>
         </div>

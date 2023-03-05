@@ -53,6 +53,6 @@ class RegisterUserController extends Controller
     {
         $request->user()->sendEmailVerificationNotification();
 
-        return back()->with('message', 'Verification link sent!');
+        return redirect(route('verification.notice'))->with('message', 'Verification link sent!');
     }
 }
