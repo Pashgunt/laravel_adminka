@@ -25,7 +25,8 @@ class AddIdColumnToPasswordReset extends Migration
      */
     public function down()
     {
-        Schema::table('password_resets', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('id');
         });
     }
 }

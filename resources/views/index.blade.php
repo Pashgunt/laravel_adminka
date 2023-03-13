@@ -13,8 +13,6 @@
         <div class="row px-3 mb-5">
             <div class="col-12">
                 <form class="d-flex align-items-center">
-                    {{--                    @csrf--}}
-                    {{--                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">--}}
                     <div class="form-group mr-5 w-25">
                         <label class="d-block">
                             Поиск по задачам

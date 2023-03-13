@@ -13,8 +13,8 @@ use Illuminate\View\View;
 class RecoveryPasswordController extends Controller
 {
 
-    public PasswordResetRepository $passwordResetRepository;
-    public UserRepository $userRepository;
+    private PasswordResetRepository $passwordResetRepository;
+    private UserRepository $userRepository;
 
     public function __construct()
     {

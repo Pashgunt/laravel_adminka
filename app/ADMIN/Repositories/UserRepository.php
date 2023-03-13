@@ -18,6 +18,11 @@ class UserRepository
         ]);
     }
 
+    public function getUserByIDs(array $userIDs): Collection
+    {
+        return User::query()->whereIn('id', $userIDs)->get();
+    }
+
     public function getAllUsers(): LengthAwarePaginator
     {
         return User::query()->paginate(5);

@@ -15,9 +15,9 @@ use Illuminate\View\View;
 class ToDoController extends Controller
 {
 
-    public TagsRepository $tagsRepository;
-    public ToDoRepository $toDoRepository;
-    public ToDoService $toDoService;
+    private TagsRepository $tagsRepository;
+    private ToDoRepository $toDoRepository;
+    private ToDoService $toDoService;
 
     public function __construct()
     {

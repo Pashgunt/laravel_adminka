@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterUserController;
 use App\Http\Controllers\RecoveryPasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ToDoController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,9 @@ Route::prefix("/email")->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::prefix('/profile')->group(function () {
+        Route::get('/{user_id}', [UserController::class, 'index'])->name('profile');
+    });
     Route::get('/', [ToDoController::class, 'getAllTasks'])->name('home');
     Route::post('/new_tag_item', [ToDoController::class, 'addNewTagItem']);
     Route::post('/create_new_task', [ToDoController::class, 'createItem']);
